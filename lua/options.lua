@@ -37,17 +37,17 @@ local options = {
 	shortmess = "c", --补全的时候少一些东西
 	encoding = "utf-8",
 	fileencoding = "utf-8",
-	fileencodings = "utf-8,utf-16,gbk,gb18030",
+	fileencodings = "utf-8,gbk",
 	autoindent = true, -- 新行对齐当前行
 	smartindent = true,
 	termguicolors = true,
 	-- whichwrap = 'b,s,<,>,[,],h,l', -- 行结尾可以跳到下一行
-	timeoutlen = 500,                     -- 设置 timeoutlen 为等待键盘快捷键连击时间500毫秒
+	timeoutlen = 300,                     -- 设置 timeoutlen 为等待键盘快捷键连击时间
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
 	-- iskeyword = "-"			--使破折号为文本对象
 	-- vim.cmd [[set iskeyword+=-]]
 	-- clipboard = "unnamedplus" --copy everthing
-
+	clipboard = ""
 }
 
 for _k, _v in pairs(options) do
