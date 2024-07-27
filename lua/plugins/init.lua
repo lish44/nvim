@@ -23,6 +23,7 @@ return {
     require "configs.dap",
     require "configs.go",
     require "configs.lspsaga",
+    require "configs.flash",
   },
   {
     "williamboman/mason.nvim",

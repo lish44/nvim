@@ -95,27 +95,3 @@ map("x", "<c-i>", ":move '<-2<CR>gv-gv", opt)
 vim.keymap.set("i", "<Tab>", function()
   return vim.fn.pumvisible == 1 and "<C-N>" or "<Tab>"
 end, { expr = true })
-
-
--- local M = {}
--- M.dap = {
---     plugin = true,
---     n = {
---         ["<leader>db"] = {
---             "<cmd> DapToggleBreakpoint <cr>",
---             "Add breakpoint at line"
---         },
---         ["<leader>dus"] = {
---             function ()
---                 local widgets = require('dap.ui.widgets');
---                 local sidebar = widgets.sidebar(widgets.scopes);
---                 sidebar.open();
---             end,
---             "Open scopes"
---         }
---     }
--- }
---
--- return M
-map("n", "<leader>db", "<cmd> DapToggleBreakpoint <cr>", opt)
-map("n", "<leader>dus", "<cmd>lua require('dap.ui.widgets').sidebar(require('dap.ui.widgets').scopes).open()<cr>", opt)

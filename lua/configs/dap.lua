@@ -1,6 +1,7 @@
 return {
   "mfussenegger/nvim-dap",
-  ft = "go",
+  lazy = true,
+  ft = 'go',
   dependencies = {
     -- Creates a beautiful debugger UI
     "rcarriga/nvim-dap-ui",
@@ -24,10 +25,9 @@ return {
       { "<F7>", dap.step_into, desc = "Debug: Step Into" },
       { "<F8>", dap.step_over, desc = "Debug: Step Over" },
       { "<F6>", dap.step_out, desc = "Debug: Step Out" },
-      -- { "<leader>db", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoint" },
-      { "<F2>", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoint" },
+      { "<leader>dd", dap.toggle_breakpoint, desc = "Debug: Toggle Breakpoint" },
       {
-        "<leader>dB",
+        "<leader>db",
         function()
           dap.set_breakpoint(vim.fn.input "Breakpoint condition: ")
         end,
