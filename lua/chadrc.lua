@@ -5,13 +5,12 @@
 local M = {}
 
 M.ui = {
-	theme = "nord",
+	theme = "github_light",
 
-	-- hl_override = {
+-- hl_override = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
 }
-M.mppings = require("mappings")
 
 return M
