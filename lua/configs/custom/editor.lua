@@ -12,8 +12,8 @@ return {
           --'regex',
         },
       }
-      vim.cmd "hi IlluminatedWordText guibg=#4C566A gui=none"
-      -- vim.cmd("hi IlluminatedWordText guibg=#ecf0f1 gui=none")
+      -- vim.cmd "hi IlluminatedWordText guibg=#4C566A gui=none"
+      vim.cmd("hi IlluminatedWordText guibg=#ecf0f1 gui=none")
     end,
   },
   {

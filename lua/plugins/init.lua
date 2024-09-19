@@ -26,5 +26,6 @@ return {
 		require("configs.custom.flash"),
 		require("configs.custom.lazygit"),
 		require("configs.custom.mason"),
+		require("configs.custom.markdown")
 	},
 }

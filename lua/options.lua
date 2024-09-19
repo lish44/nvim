@@ -47,7 +47,8 @@ local options = {
 	-- iskeyword = "-"			--使破折号为文本对象
 	-- vim.cmd [[set iskeyword+=-]]
 	-- clipboard = "unnamedplus" --copy everthing
-	clipboard = ""
+	clipboard = "",
+    linespace = 2, --行间距
 }
 
 for _k, _v in pairs(options) do
@@ -65,3 +66,5 @@ augroup RememberCursor
         \ endif
 augroup END
 ]])
+
+require "configs.custom.selfmarkdown"

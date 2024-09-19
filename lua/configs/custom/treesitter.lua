@@ -14,6 +14,7 @@ return {
           "vimdoc",
           "luadoc",
           "markdown",
+          "proto",
         },
         ignore_install = {},
         highlight = {

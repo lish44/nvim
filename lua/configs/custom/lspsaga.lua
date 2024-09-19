@@ -2,7 +2,7 @@
 return {
 	"nvimdev/lspsaga.nvim",
 	ft = { "go", "lua" },
-	event = "BufEnter",
+	-- event = "BufEnter",
 	config = function()
 		require("lspsaga").setup({
 			symbol_in_winbar = { -- 光标所在方法指示路径
