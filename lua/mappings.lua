@@ -31,8 +31,8 @@ map("n", "Q", ":q!<cr>", opt)
 map("n", "<leader>q", "q", opt)
 
 -- move
-map("n", "j", "gj", opt)
-map("n", "i", "gk", opt)
+--map("n", "j", "j", opt)
+map("n", "i", "k", opt)
 map("n", "k", "i", opt)
 map("n", "K", "I", opt)
 map("n", "H", "^", opt)
