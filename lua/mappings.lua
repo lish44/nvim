@@ -23,12 +23,20 @@ map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- 退出保存
 map("n", "<F1>", "<Nop>", opt)
 
-map("n", "q", ":q<cr>", opt)
+map("n", "q", function()
+  local listed = vim.fn.getbufinfo { buflisted = 1 }
+  if #listed > 1 then
+    vim.cmd "bd"
+  else
+    vim.cmd "q"
+  end
+end, opt)
 map("n", "Q", ":q!<cr>", opt)
 --map("n", "<c-s>", ":w<cr>", opt)
 
 -- 宏映射更改
 map("n", "<leader>q", "q", opt)
+map("n", "<leader>fm", "<cmd>Telescope lsp_document_symbols<cr>", vim.tbl_extend("force", opt, { desc = "Telescope document symbols" }))
 
 -- move
 --map("n", "j", "j", opt)
@@ -72,15 +80,34 @@ map("n", "<M-Down>", ":resize -2<CR>", opt)
 map("n", "<M-Up>", ":resize +2<CR>", opt)
 map("n", "<M-Left>", ":vertical resize +2<CR>", opt)
 
-map("v", "i", "k", opt)
-map("v", "k", "i", opt)
-map("v", "K", "I", opt)
-map("v", "H", "^", opt)
-map("v", "L", "$", opt)
-map("v", "J", "4j", opt)
-map("v", "I", "4k", opt)
+local visual_opt = { noremap = true, silent = true, nowait = true }
+map("v", "i", "k", visual_opt)
+map("v", "k", "i", visual_opt)
+map("v", "K", "I", visual_opt)
+map("v", "H", "^", visual_opt)
+map("v", "L", "$", visual_opt)
+map("v", "J", "4j", visual_opt)
+map("v", "I", "4k", visual_opt)
 -- 在visual 模式里粘贴不复制
 map("v", "p", '"_dP', opt)
+
+-- Neovim 0.12 built-in treesitter incremental selection
+local function expand_node_selection()
+  if vim.fn.mode() == "n" then
+    vim.cmd.normal { args = { "v" }, bang = true }
+  end
+
+  require("vim.treesitter._select").select_parent(1)
+end
+
+local function shrink_node_selection()
+  require("vim.treesitter._select").select_child(1)
+end
+
+map({ "n", "x" }, "<CR>", expand_node_selection, opt)
+map("x", "<BS>", shrink_node_selection, opt)
+map("x", "<leader>a", "]n", opt)
+map("x", "<leader>i", "[n", opt)
 
 map("i", "jj", "<esc>", opt)
 --map("i", "<C-s>", "<esc>:w<enter>", opt)
@@ -93,5 +120,14 @@ map("x", "<c-j>", ":move '>+1<CR>gv-gv", opt)
 map("x", "<c-i>", ":move '<-2<CR>gv-gv", opt)
 
 vim.keymap.set("i", "<Tab>", function()
-  return vim.fn.pumvisible == 1 and "<C-N>" or "<Tab>"
+  return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
 end, { expr = true })
+
+vim.keymap.set("i", "<Down>", function()
+  return vim.fn.pumvisible() == 1 and "<C-n>" or "<Down>"
+end, { expr = true })
+
+vim.keymap.set("i", "<Up>", function()
+  return vim.fn.pumvisible() == 1 and "<C-p>" or "<Up>"
+end, { expr = true })
+

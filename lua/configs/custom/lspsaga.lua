@@ -19,10 +19,25 @@ return {
 				sign = false,
 				virtual_text = false,
 			},
-			vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>"),
-			vim.keymap.set("n", "<F2>", "<cmd>Lspsaga diagnostic_jump_next<cr>"),
-			vim.keymap.set("n", "<F1>", "<cmd>Lspsaga code_action<cr>"),
+
+			finder = {
+				layout = "float",
+				keys = {
+					toggle_or_open = "<CR>",
+					split = "s",
+					vsplit = "v",
+					tabe = "t",
+					tabnew = "r",
+					quit = "q",
+					close = "<Esc>",
+					shuttle = "<Tab>",
+				},
+			},
 		})
+
+		vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>")
+		vim.keymap.set("n", "<F2>", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+		vim.keymap.set("n", "<F1>", "<cmd>Lspsaga code_action<cr>")
 	end,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter", -- optional

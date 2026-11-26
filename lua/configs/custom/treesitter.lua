@@ -5,43 +5,41 @@ return {
     priority = 1000,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup {
-        ensure_installed = {
+      vim.treesitter.language.register("bash", "zsh")
+
+      require("nvim-treesitter").setup {
+        install_dir = vim.fn.stdpath("data") .. "/site",
+      }
+
+      require("nvim-treesitter").install {
+        "bash",
+        "go",
+        "lua",
+        "vim",
+        "vimdoc",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "proto",
+        "query",
+      }:wait(300000)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
           "bash",
+          "zsh",
           "go",
           "lua",
           "vim",
-          "vimdoc",
-          "luadoc",
+          "help",
           "markdown",
           "proto",
+          "query",
         },
-        ignore_install = {},
-        highlight = {
-          enable = true,
-          disable = {},
-        },
-        indent = {
-          enable = false,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<CR>",
-            node_incremental = "<CR>",
-            node_decremental = "<BS>",
-            scope_incremental = "gaa",
-          },
-        },
-        refactor = {
-          highlight_definitions = {
-            enable = true,
-            -- Set to false if you have an `updatetime` of ~100.
-            clear_on_cursor_move = true,
-          },
-          highlight_current_scope = { enable = true },
-        },
-      }
+        callback = function(args)
+          pcall(vim.treesitter.start, args.buf)
+        end,
+      })
     end,
   },
   -- {

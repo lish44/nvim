@@ -6,6 +6,6 @@ return {
     -- "stylua",
     -- "gopls",
     -- },
-    mason = { cmd = true, pkgs = { "lua-language-server", "stylua", "gopls"} },
+    mason = { cmd = true, pkgs = { "lua-language-server", "stylua", "gopls", "jdtls" } },
   },
 }

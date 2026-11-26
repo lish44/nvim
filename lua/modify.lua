@@ -1,7 +1,6 @@
 
 vim.api.nvim_set_keymap('n', 'W', ':lua JumpToNextWord()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rr', ':lua CompileRunGcc()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>t', ':lua GetUpperCase()<CR>', { noremap = true, silent = true })
 
 vim.g.flutter_default_device = 'macos'
 vim.g.flutter_run_args = ''
@@ -34,7 +33,7 @@ function CompileRunGcc()
 		vim.cmd("!\"" .. vim.g.mkdp_browser .. "\" % &")
 	elseif ft == 'go' then
 		split()
-		vim.cmd("term go run %")
+		vim.cmd("term go run .")
 	elseif ft == 'sh' then
 		split()
 		vim.cmd("term bash %")

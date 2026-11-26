@@ -2,7 +2,7 @@ return {
   {
     "RRethy/vim-illuminate", -- 字符高亮插件
     event = { "BufReadPost", "BufNewFile" },
-    --BufReadPost: 当一个缓冲区（buffer）被读取完成后触发 
+    --BufReadPost: 当一个缓冲区（buffer）被读取完成后触发
     --BufNewFile: 开始编辑一个新文件（即当前缓冲区是一个新建文件）时触发
     config = function()
       require("illuminate").configure {
@@ -12,8 +12,8 @@ return {
           --'regex',
         },
       }
-      -- vim.cmd "hi IlluminatedWordText guibg=#4C566A gui=none"
-      vim.cmd("hi IlluminatedWordText guibg=#ecf0f1 gui=none")
+      vim.cmd "hi IlluminatedWordText guibg=#4C566A gui=none"
+      -- vim.cmd("hi IlluminatedWordText guibg=#ecf0f1 gui=none")
     end,
   },
   {
